@@ -10,10 +10,7 @@
       "path": "/_v/status/:code",
       "public": true
     },
-    "contact": {
-      "path": "/contact/:id",
-      "public": true
-    },
+ 
     "captcha": {
       "path": "/captcha",
       "public": true
