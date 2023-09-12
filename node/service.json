@@ -14,6 +14,10 @@
     "captcha": {
       "path": "/captcha",
       "public": true
+    },
+    "contact": {
+      "path": "/contact",
+      "public": true
     }
   }
 }
