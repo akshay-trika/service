@@ -1,12 +1,11 @@
 import type { InstanceOptions, IOContext } from '@vtex/api'
 import { ExternalClient, Apps } from '@vtex/api'
 
-
 export default class Contact extends ExternalClient {
   private setting: any | boolean = false
   constructor(context: IOContext, options?: InstanceOptions) {
     super(`http://trika.vtexcommercestable.com.br`, context, {
-      ...options,
+      ...options ,
     })
   }
   public async getContactDetails() {
@@ -32,6 +31,7 @@ export default class Contact extends ExternalClient {
       },
     }
   }
+
   public async getCaptchadetails() {
     const app = new Apps(this.context)
     let settings = await app.getAppSettings(process.env.VTEX_APP_ID ?? '')
