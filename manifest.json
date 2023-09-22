@@ -39,7 +39,7 @@
     }
   ],
   "settingsSchema": {
-    "title": "Akshay T",
+    "title": "Application  API Keys",
     "type": "object",
     "access": "public",
     "properties": {
