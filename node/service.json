@@ -9,6 +9,15 @@
     "status": {
       "path": "/_v/status/:code",
       "public": true
+    },
+ 
+    "captcha": {
+      "path": "/captcha",
+      "public": true
+    },
+    "contact": {
+      "path": "/contact",
+      "public": true
     }
   }
 }

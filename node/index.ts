@@ -1,18 +1,16 @@
 import type { ClientsConfig, ServiceContext, RecorderState } from '@vtex/api'
 import { LRUCache, method, Service } from '@vtex/api'
 
-import { Clients } from './clients'
-import { status } from './middlewares/status'
+import  {Clients}  from './clients'
+import  {status}  from './middlewares/status'
 import { validate } from './middlewares/validate'
+import { getContacts } from './middlewares/contact'
+import { getCaptcha } from './middlewares/captcha'
 
 const TIMEOUT_MS = 800
 
 // Create a LRU memory cache for the Status client.
-// The 'max' parameter sets the size of the cache.
 // The @vtex/api HttpClient respects Cache-Control headers and uses the provided cache.
-// Note that the response from the API being called must include an 'etag' header
-// or a 'cache-control' header with a 'max-age' value. If neither exist, the response will not be cached.
-// To force responses to be cached, consider adding the `forceMaxAge` option to your client methods.
 const memoryCache = new LRUCache<string, any>({ max: 5000 })
 
 metrics.trackCache('status', memoryCache)
@@ -44,6 +42,7 @@ declare global {
   }
 }
 
+
 // Export a service that defines route handlers and client options.
 export default new Service({
   clients,
@@ -52,5 +51,13 @@ export default new Service({
     status: method({
       GET: [validate, status],
     }),
+    contact: method({
+      GET: [getContacts],
+
+    }),
+    captcha:method({
+      GET:[getCaptcha]
+    })
+   
   },
 })
